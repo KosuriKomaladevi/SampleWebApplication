@@ -53,8 +53,8 @@ pipeline {
                 script{
                     deployToTomcat([
                                adapters: [tomcat8(credentialsId: 'tomcat-manager-credentials', path: '', url: 'http://localhost:9090')], 
-                               contextPath: 'MyApplication',
-                               war: '" **/*.war"'
+                               contextPath: 'MyApplication1',
+                               war: '**/*.war'
                     ])
                     
                     
