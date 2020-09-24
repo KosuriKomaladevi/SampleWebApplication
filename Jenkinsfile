@@ -22,6 +22,33 @@ pipeline {
             }
         }
         
+         stage('build stage'){
+            steps{
+                script{
+                    toBuild()
+                }
+            }
+        }
+        stage('package stage'){
+            steps{
+                script{              
+                    toPackage()
+                }
+            }
+        }
+
+        
+     
+       stage('Deploying to Artifactory'){
+             steps{
+                 script{
+                    artifactory([
+                        server : 'artifactory',
+                        tool :"Maven3" 
+                    ])
+                 }
+             }
+         }
         stage('Deploying to Tomcat Server'){
             steps{
                 script{
